@@ -1,9 +1,12 @@
 package routes
 
-import "github.com/araquach/apiClientForms/handlers"
+import (
+	"github.com/araquach/apiClientForms/handlers"
+	"github.com/gorilla/mux"
+)
 
-func extensions() {
-	s := R.PathPrefix("/api/client-forms").Subrouter()
+func extensions(r *mux.Router) {
+	s := r.PathPrefix("/api/client-forms").Subrouter()
 
 	s.HandleFunc("/extensions/{salon}/{first_name}/{last_name}", handlers.ApiGetExtensionClients).Methods("GET")
 	s.HandleFunc("/extensions", handlers.ApiExtensionsCreate).Methods("POST")

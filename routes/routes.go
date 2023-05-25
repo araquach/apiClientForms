@@ -4,11 +4,11 @@ import (
 	"github.com/gorilla/mux"
 )
 
-var R mux.Router
+func ClientFormsRouter() *mux.Router {
+	r := mux.NewRouter()
 
-func ClientFormsRouter() {
-	extensions()
-	skinTest()
+	extensions(r)
+	skinTest(r)
 
-	return
+	return r
 }
